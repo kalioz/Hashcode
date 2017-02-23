@@ -33,4 +33,5 @@ public class Requete {
 		this.video = video;
 		this.endPoint = endPoint;
 	}
+	
 }

@@ -4,6 +4,7 @@ public class EndPoint {
 	int [] cachesConnectesID;
 	Requete [] videosDemandes;
 	
+	
 	Cache [] cachesConnectes;//a implémenter APRES l'ID;
 	int UID;
 	
