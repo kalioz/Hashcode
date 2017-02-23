@@ -59,15 +59,37 @@ public class Main {
 		System.out.println("latency to DC : "+endPoints[0].getLatencyToDataCenter());
 		
 		//Requetes
+		int [] requetesParEndPoint = new int[endPoints.length];
 		for (int i = 0; i < this.requetes.length; i++){
 			String [] line = texte[j].split(" ");
 			j++;
+			requetesParEndPoint[Integer.parseInt(line[1])]++;
 			requetes[i] = new Requete(videos[Integer.parseInt(line[0])],endPoints[Integer.parseInt(line[1])],Integer.parseInt(line[2]));
 		}
+		for (int i = 0; i < this.endPoints.length; i++){
+			Requete [] reqs = new Requete[requetesParEndPoint[i]];
+			j = 0;
+			for (int k = 0; k < this.requetes.length; k++){
+				if (this.requetes[k].getEndPoint().getUID() == i){
+					reqs[j] = this.requetes[k];
+					j++;
+				}
+			}
+			this.endPoints[i].setVideosDemandes(reqs);
+		}
 		
+		System.out.println("EnDPoint 0 : "+this.endPoints[0].getVideosDemandes().length+" videos demandées");
 		System.out.println("requete 0 : video "+requetes[0].getVideo().getUID() + " - endpoint "+requetes[0].getEndPoint().getUID()+" - nb connexions "+requetes[0].getNbRequetes());
 		
+		System.out.println(">> End of load");
+	}
 	
+	int calculateScore(){
+		for (int iEnd = 0; iEnd < this.endPoints.length; iEnd++){
+			
+		}
+		
+		return 0;
 	}
 	
 }
