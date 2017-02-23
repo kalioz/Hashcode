@@ -27,7 +27,7 @@ public class Distribution {
 		int comparaisonVideo;
 		boolean remplace;
 		
-		for (j=0;j<this.caches.length;j++)//première vidéo va forcement dans le cache
+		for (j=0;j<this.caches.length;j++) //première vidéo va forcement dans le cache
 			caches[j].getCacheVideoFin()[0] = caches[j].getListeVideo()[0][0];
 		
 		
