@@ -68,7 +68,7 @@ public class Main {
 		}
 		for (int i = 0; i < cNum.length; i++){
 			int []listeEndPoints = new int[cNum[i]];
-			int k = 0;
+			int k = 0; 
 			for (int h = 0; h < this.endPoints.length; h++){
 				for (int g = 0; g < this.endPoints[h].getCachesConnectes().length; g++){
 					if (i == this.endPoints[h].getCachesConnectesID()[g]){
