@@ -113,6 +113,7 @@ public class Cache {
 				listeVideo[i][1]=construitRapport(numero,listeVideoEntree);
 			}
 			this.listevideo=listeVideo;
+			
 		}
 		
 		
