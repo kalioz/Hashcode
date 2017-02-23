@@ -14,7 +14,15 @@ public class EndPoint {
 		this.latencies = latencies;
 	}
 
-
+	public int getRequeteFromVideo(Video vid){
+		int retour = 0;
+		for (int i = 0; i < this.getVideosDemandes().length; i++){
+			if (this.getVideosDemandes()[i].getVideo() == vid){
+				retour += this.getVideosDemandes()[i].getNbRequetes();
+			}
+		}
+		return retour;
+	}
 	
 	static int nbCreated;
 	
