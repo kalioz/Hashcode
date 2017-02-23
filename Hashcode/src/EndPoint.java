@@ -2,6 +2,15 @@
 public class EndPoint {
 	int latencyToDataCenter;
 	int [] cachesConnectesID;
+	int [] latencies;
+	public int[] getLatencies() {
+		return latencies;
+	}
+
+	public void setLatencies(int[] latencies) {
+		this.latencies = latencies;
+	}
+
 	Requete [] videosDemandes;
 	
 	
@@ -10,9 +19,10 @@ public class EndPoint {
 	
 	static int nbCreated;
 	
-	EndPoint(int latencyToDataCenter, int [] cachesConnectesID){
+	EndPoint(int latencyToDataCenter, int [] cachesConnectesID, int [] latencies){
 		this.latencyToDataCenter = latencyToDataCenter;
 		this.cachesConnectesID = cachesConnectesID;
+		this.latencies = latencies;
 		this.UID = EndPoint.nbCreated;
 		
 		EndPoint.nbCreated++;		
