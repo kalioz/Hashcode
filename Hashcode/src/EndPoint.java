@@ -17,13 +17,20 @@ public class EndPoint {
 		return retour;
 	}
 	
-	
 	public int[][] getVideoRequest() {
 		return videoRequest;
 	}
 
 	public void setVideoRequest(int[][] videoRequest) {
 		this.videoRequest = videoRequest;
+		
+	}
+	public void setVideoRequest() {
+		this.videoRequest = new int[this.videosDemandes.length][2];
+		for (int i=0;i<this.videosDemandes.length;i++){
+			this.videoRequest[i][0]=this.videosDemandes[i].getVideo().getUID();
+			this.videoRequest[i][1]=this.videosDemandes[i].getNbRequetes();
+		}
 	}
 
 	public int[] getLatencies() {
@@ -72,11 +79,14 @@ public class EndPoint {
 	}
 
 	public Requete[] getVideosDemandes() {
+		
 		return videosDemandes;
 	}
 
 	public void setVideosDemandes(Requete[] videosDemandes) {
+		
 		this.videosDemandes = videosDemandes;
+		setVideoRequest();
 	}
 
 	public Cache[] getCachesConnectes() {
