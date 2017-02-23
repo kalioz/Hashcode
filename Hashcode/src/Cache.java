@@ -71,26 +71,52 @@ public class Cache {
 		}
 		return retour;
 	}
-	void construitListe(int nombreVideos){
+	int construitRapport(int numVideo, Video [] listeVideo){
+		int somme=0;
+		for (int i=0;i<this.listeEndPoints.length;i++){
+			if(this.listeEndPoints[i].aLaVideo(numVideo)){
+				somme+=this.listeEndPoints[i].getRequeteFromVideo(listeVideo[numVideo]);
+			}
+		}
+		return somme;
+	}
+	void construitListe(int nombreVideos,Video [] listeVideoEntree){
 		
-	
+		int [] listeNumeros=new int [nombreVideos];
+		listeNumeros[0]=-1;
 		for (int i=0;i<this.listeEndPoints.length;i++){
 			for(int j=0;j<this.listeEndPoints[i].getVideoRequest().length;i++){
-			
+				listeNumeros[this.listeEndPoints[i].getVideoRequest()[j][0]]=this.listeEndPoints[i].getVideoRequest()[j][0];
 			} 
 		}
+		int compteur=-1;
+		for (int i=0;i<nombreVideos;i++){
+			if (listeNumeros[i]!=0||listeNumeros[i]!=-1){
+				compteur++;
+			}
+		}
+		int savecompteur=compteur+1;
+		int [] listeNumerosfinale = new int [savecompteur];
 		
-	}
-	
-	
-	int construitRapport(int numVideo){
-		for (int i=0;i<this.listeEndPoints.length;i++){
+		for (int i=0;i<nombreVideos;i++){
+			if (listeNumeros[i]!=0||listeNumeros[i]!=-1){
+				listeNumerosfinale[compteur]=listeNumeros[i];
+				compteur--;
+			}
+		}
+			
+		if(savecompteur!=0){
+			int [][]listeVideo=new int [savecompteur][2];
+			for (int i=0;i<savecompteur;i++){
+				int numero=listeNumerosfinale[i];
+				listeVideo[i][0]=numero;
+				listeVideo[i][1]=construitRapport(numero,listeVideoEntree);
+			}
+			this.listevideo=listeVideo;
 			
 		}
-		return 0;
-	}
-	
-	void classeVideos(){
+		
+		
 		
 	}
 }
