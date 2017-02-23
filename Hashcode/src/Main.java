@@ -10,6 +10,11 @@ public class Main {
 		Main game = new Main();
 		game.load("C:/Users/truc/Downloads/me_at_the_zoo.in");
 		System.out.println("Score initial = "+game.calculateScore());
+		//méthode de calcul 
+		
+		//fin méthode de calcul
+		game.write("C:/Users/truc/Downloads/me_at_the_zoo.out");
+		
 	}
 	
 	void load(String pathToSource){
@@ -67,12 +72,12 @@ public class Main {
 			}
 		}
 		for (int i = 0; i < cNum.length; i++){
-			int []listeEndPoints = new int[cNum[i]];
+			EndPoint []listeEndPoints = new EndPoint[cNum[i]];
 			int k = 0; 
 			for (int h = 0; h < this.endPoints.length; h++){
 				for (int g = 0; g < this.endPoints[h].getCachesConnectes().length; g++){
 					if (i == this.endPoints[h].getCachesConnectesID()[g]){
-						listeEndPoints[k] = h;
+						listeEndPoints[k] = this.endPoints[h];
 						k++;
 					}
 				}
@@ -125,4 +130,24 @@ public class Main {
 		return score;
 	}
 	
+	void write(String pathToOutput){
+
+		int nbCachesUtilise = 0;
+		for (int i = 0; i < this.caches.length; i++){
+			if (this.caches[i].getCacheVideoFin().length !=0){
+				nbCachesUtilise++;
+			}
+		}
+		String texte = ""+nbCachesUtilise+"\n";
+		for (int i = 0; i < this.caches.length; i++){
+			if (this.caches[i].getCacheVideoFin().length !=0){
+				texte+=""+i+ " ";
+				for (int j = 0; j < this.caches[i].getCacheVideoFin().length; j++){
+					texte+=""+this.caches[i].getCacheVideoFin()[j]+ " ";
+				}
+				texte+="\n";
+			}
+		}
+		gestionIO.write(pathToOutput, texte);
+	}
 }
