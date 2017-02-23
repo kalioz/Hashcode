@@ -67,7 +67,15 @@ public class Main {
 		
 		System.out.println("requete 0 : video "+requetes[0].getVideo().getUID() + " - endpoint "+requetes[0].getEndPoint().getUID()+" - nb connexions "+requetes[0].getNbRequetes());
 		
+		System.out.println(">> End of load");
+	}
 	
+	int calculateScore(){
+		for (int iEnd = 0; iEnd < this.endPoints.length; iEnd++){
+			
+		}
+		
+		return 0;
 	}
 	
 }
