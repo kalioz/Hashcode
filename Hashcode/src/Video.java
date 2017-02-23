@@ -5,7 +5,7 @@ public class Video {
 	int taille;
 	EndPoint [] endPoints;
 	
-	Video(int taille ){
+	Video(int taille){
 		this.taille = taille;
 		this.UID = Video.nb;
 		Video.nb++;
