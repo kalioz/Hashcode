@@ -7,6 +7,15 @@ public class EndPoint {
 	int UID;
 	int [][] videoRequest;
 	
+	boolean aLaVideo(int numVideo){
+		boolean retour=false;
+		for (int i=0;i<this.videoRequest.length;i++){
+			if(this.videoRequest[i][0]==numVideo){
+				retour=true;
+			}
+		}
+		return retour;
+	}
 	
 	public int[][] getVideoRequest() {
 		return videoRequest;
