@@ -28,13 +28,14 @@ public class Distribution {
 		boolean remplace;
 		
 		for (j=0;j<this.caches.length;j++) //première vidéo va forcement dans le cache
-			caches[j].getCacheVideoFin()[0] = caches[j].getListeVideo()[0][0];
+			caches[j].setCacheVideo(caches[j].getListeVideo()[0]);
 		
 		
 		for (k=1;k<this.videos.length;k++){ //Pour toutes les vidéo potentielles
 			
 			for (i=0;i<this.caches.length;i++){ //on parcours chaque caches
 				 remplace=false;
+				 				 
 				 comparaisonVideo = caches[i].getListeVideo()[k][0]; //on prend la vidéo de rang où l'on se trouve
 				 
 				 for (j=0;j<this.caches.length;j++){ //on regarde si il n'y a pas deux vidéos au même rang
@@ -56,11 +57,60 @@ public class Distribution {
 							 caches[i].decCapacite(videos[caches[i].getListeVideo()[k][0]].getTaille());
 						 }
 					 }
-				}
-								
+				}	
 			}
 		}
 		
+	}
+
+
+	public EndPoint[] getEndPoints() {
+		return endPoints;
+	}
+
+
+	public void setEndPoints(EndPoint[] endPoints) {
+		this.endPoints = endPoints;
+	}
+
+
+	public Cache[] getCaches() {
+		return caches;
+	}
+
+
+	public void setCaches(Cache[] caches) {
+		this.caches = caches;
+	}
+
+
+	public Requete[] getRequetes() {
+		return requetes;
+	}
+
+
+	public void setRequetes(Requete[] requetes) {
+		this.requetes = requetes;
+	}
+
+
+	public Video[] getVideos() {
+		return videos;
+	}
+
+
+	public void setVideos(Video[] videos) {
+		this.videos = videos;
+	}
+
+
+	public int getCacheCapacity() {
+		return cacheCapacity;
+	}
+
+
+	public void setCacheCapacity(int cacheCapacity) {
+		this.cacheCapacity = cacheCapacity;
 	}
 	
 }
