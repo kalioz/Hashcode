@@ -77,6 +77,8 @@ public class Main {
 			}
 			this.endPoints[i].setVideosDemandes(reqs);
 		}
+		
+		System.out.println("EnDPoint 0 : "+this.endPoints[0].getVideosDemandes().length+" videos demandées");
 		System.out.println("requete 0 : video "+requetes[0].getVideo().getUID() + " - endpoint "+requetes[0].getEndPoint().getUID()+" - nb connexions "+requetes[0].getNbRequetes());
 		
 		System.out.println(">> End of load");
