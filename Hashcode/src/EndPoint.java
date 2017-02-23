@@ -2,6 +2,10 @@ public class EndPoint {
 	int latencyToDataCenter;
 	int [] cachesConnectesID;
 	int [] latencies;
+	Requete [] videosDemandes;
+	Cache [] cachesConnectes;//a implémenter APRES l'ID;
+	int UID;
+	
 	public int[] getLatencies() {
 		return latencies;
 	}
@@ -10,11 +14,7 @@ public class EndPoint {
 		this.latencies = latencies;
 	}
 
-	Requete [] videosDemandes;
-	
-	
-	Cache [] cachesConnectes;//a implémenter APRES l'ID;
-	int UID;
+
 	
 	static int nbCreated;
 	

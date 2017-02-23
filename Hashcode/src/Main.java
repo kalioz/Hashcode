@@ -43,14 +43,17 @@ public class Main {
 			int latency = Integer.parseInt(lineI0[0]);
 			int nbCaches = Integer.parseInt(lineI0[1]);
 			int [] c = new int[nbCaches];
+			Cache[] c2 = new Cache[nbCaches];
 			int [] la = new int[nbCaches];
 			for (int k = 0; k < nbCaches; k++){
 				String[] lineIk = texte[j].split(" ");
 				j++;
 				c[k] = Integer.parseInt(lineIk[0]);
+				c2[k] = this.caches[c[k]];
 				la[k] =Integer.parseInt(lineIk[1]);
 			}
 			endPoints[i] = new EndPoint(latency,c,la);
+			endPoints[i].setCachesConnectes(c2);
 		}
 		System.out.println("endPoint "+endPoints[0].UID +" - nb Caches : "+endPoints[0].getCachesConnectesID().length + "caches 0 : "+endPoints[0].getCachesConnectesID()[0] );
 		System.out.println("latency to DC : "+endPoints[0].getLatencyToDataCenter());
