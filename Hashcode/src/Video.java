@@ -3,6 +3,7 @@ public class Video {
 	int UID;
 	static int nb;
 	int taille;
+	EndPoint [] endPoints;
 	
 	Video(int taille){
 		this.taille = taille;
@@ -33,4 +34,14 @@ public class Video {
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
+
+	public EndPoint[] getEndPoints() {
+		return endPoints;
+	}
+
+	public void setEndPoints(EndPoint[] endPoints) {
+		this.endPoints = endPoints;
+	}
+	
+	
 }
