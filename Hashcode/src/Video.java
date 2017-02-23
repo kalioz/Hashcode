@@ -33,5 +33,4 @@ public class Video {
 	public void setTaille(int taille) {
 		this.taille = taille;
 	}
-	
 }

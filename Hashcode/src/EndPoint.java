@@ -1,4 +1,3 @@
-
 public class EndPoint {
 	int latencyToDataCenter;
 	int [] cachesConnectesID;

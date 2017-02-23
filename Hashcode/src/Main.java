@@ -1,4 +1,3 @@
-
 public class Main {
 	EndPoint [] endPoints;
 	Cache [] caches;
