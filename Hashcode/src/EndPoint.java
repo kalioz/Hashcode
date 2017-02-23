@@ -17,6 +17,7 @@ public class EndPoint {
 		return retour;
 	}
 	
+	
 	public int[][] getVideoRequest() {
 		return videoRequest;
 	}
