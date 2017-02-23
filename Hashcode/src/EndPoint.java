@@ -5,7 +5,17 @@ public class EndPoint {
 	Requete [] videosDemandes;
 	Cache [] cachesConnectes;//a implémenter APRES l'ID;
 	int UID;
+	int [][] videoRequest;
 	
+	
+	public int[][] getVideoRequest() {
+		return videoRequest;
+	}
+
+	public void setVideoRequest(int[][] videoRequest) {
+		this.videoRequest = videoRequest;
+	}
+
 	public int[] getLatencies() {
 		return latencies;
 	}
