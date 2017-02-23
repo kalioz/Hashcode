@@ -86,6 +86,8 @@ public class Main {
 		}
 		System.out.println("cache 0 est connecté à "+this.caches[0].getlisteEndPoints().length+" EP"); 
 		
+		
+		
 		//Requetes
 		int [] requetesParEndPoint = new int[endPoints.length];
 		for (int i = 0; i < this.requetes.length; i++){
@@ -109,6 +111,10 @@ public class Main {
 		System.out.println("EnDPoint 0 : "+this.endPoints[0].getVideosDemandes().length+" videos demandées");
 		System.out.println("requete 0 : video "+requetes[0].getVideo().getUID() + " - endpoint "+requetes[0].getEndPoint().getUID()+" - nb connexions "+requetes[0].getNbRequetes());
 		
+		//add videos in cache
+		for (int i = 0; i < this.caches.length; i++){
+			this.caches[i].construitListe(this.videos.length,videos);
+		}
 		System.out.println(">> End of load");
 	}
 	

@@ -85,7 +85,7 @@ public class Cache {
 		int [] listeNumeros=new int [nombreVideos];
 		listeNumeros[0]=-1;
 		for (int i=0;i<this.listeEndPoints.length;i++){
-			for(int j=0;j<this.listeEndPoints[i].getVideoRequest().length;i++){
+			for(int j=0;j<this.listeEndPoints[i].getVideoRequest().length;j++){
 				listeNumeros[this.listeEndPoints[i].getVideoRequest()[j][0]]=this.listeEndPoints[i].getVideoRequest()[j][0];
 			} 
 		}
