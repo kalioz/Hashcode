@@ -9,6 +9,7 @@ public class Main {
 	public static void main(String[] args){
 		Main game = new Main();
 		game.load("C:/Users/truc/Downloads/me_at_the_zoo.in");
+		System.out.println("Score initial = "+game.calculateScore());
 	}
 	
 	void load(String pathToSource){
@@ -58,6 +59,28 @@ public class Main {
 		System.out.println("endPoint "+endPoints[0].UID +" - nb Caches : "+endPoints[0].getCachesConnectesID().length + "caches 0 : "+endPoints[0].getCachesConnectesID()[0] );
 		System.out.println("latency to DC : "+endPoints[0].getLatencyToDataCenter());
 		
+		//ajout Endpoints dans cache
+		int [] cNum = new int[this.caches.length];
+		for (int i = 0; i < this.endPoints.length; i++){
+			for (int k = 0; k < this.endPoints[i].getCachesConnectesID().length; k++){
+				cNum[this.endPoints[i].getCachesConnectesID()[k]]++;
+			}
+		}
+		for (int i = 0; i < cNum.length; i++){
+			int []listeEndPoints = new int[cNum[i]];
+			int k = 0;
+			for (int h = 0; h < this.endPoints.length; h++){
+				for (int g = 0; g < this.endPoints[h].getCachesConnectes().length; g++){
+					if (i == this.endPoints[h].getCachesConnectesID()[g]){
+						listeEndPoints[k] = h;
+						k++;
+					}
+				}
+			}
+			this.caches[i].setlisteEndPoints(listeEndPoints);
+		}
+		System.out.println("cache 0 est connecté à "+this.caches[0].getlisteEndPoints().length+" EP"); 
+		
 		//Requetes
 		int [] requetesParEndPoint = new int[endPoints.length];
 		for (int i = 0; i < this.requetes.length; i++){
@@ -85,11 +108,21 @@ public class Main {
 	}
 	
 	int calculateScore(){
+		int score = 0;
 		for (int iEnd = 0; iEnd < this.endPoints.length; iEnd++){
-			
+			for (int iVid = 0; iVid < this.endPoints[iEnd].getVideosDemandes().length; iVid++){
+				int vid = this.endPoints[iEnd].getVideosDemandes()[iVid].getVideo().getUID();
+				int minimalTime = this.endPoints[iEnd].getLatencyToDataCenter();
+				for (int iCache = 0; iCache < this.endPoints[iEnd].getCachesConnectes().length; iCache++){
+					if (this.endPoints[iEnd].getCachesConnectes()[iCache].possedeVideo(vid)){
+						minimalTime = Math.min(minimalTime, this.endPoints[iEnd].getLatencies()[iCache]);
+					}
+				}
+				score += (this.endPoints[iEnd].getLatencyToDataCenter() - minimalTime)*this.endPoints[iEnd].getRequeteFromVideo(this.endPoints[iEnd].getVideosDemandes()[iVid].getVideo());
+			}
 		}
 		
-		return 0;
+		return score;
 	}
 	
 }
